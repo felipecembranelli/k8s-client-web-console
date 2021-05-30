@@ -3,7 +3,7 @@ This web application is a demo using kubernetes-csharp client library.
 
 # Config
 
-The client library uses the your /.kube/config file to connect to your kubernetes cluster. For more information go to the original [client repo library](https://github.com/kubernetes-client/csharp)
+The client library uses your /.kube/config file to connect to your kubernetes cluster. For more information go to the original [client repo library](https://github.com/kubernetes-client/csharp)
 
 # Usage
 
