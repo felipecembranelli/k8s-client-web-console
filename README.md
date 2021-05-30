@@ -13,8 +13,8 @@ dotnet run
 ```
 
 ## Sample Screens
-![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/main.jpg)
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/main.JPG)
 
 ![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/namespaces.png)
 
-![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/pods.jpg)
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/pods.JPG)
