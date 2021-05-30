@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Pod Logs";
+}
+
+@model web_ui.Models.PodLogModel    
+       
+@{    
+        ViewData["Title"] = "Pod Logs";    
+    }    
+<h2>Pod Logs</h2>    
+<p>    
+    <a asp-action="Link">Back</a>    
+</p>    
+
+<div>    
+    <h4>Details</h4>    
+    <hr />    
+    <dl class="dl-horizontal">    
+        <dt>    
+            "Log"    
+        </dt>    
+        <dd>    
+            @Html.DisplayFor(model => model.Text)    
+        </dd>    
+    </dl>    
+</div> 
