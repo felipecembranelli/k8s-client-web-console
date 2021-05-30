@@ -1,5 +1,5 @@
 {
-  "FilePath": "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/examples/web-api/KubeInspector.csproj",
+  "FilePath": "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-api/KubeInspector.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/kubernetes-client-api-consumer/web-ui/web-ui.csproj": {}
+    "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/web-ui.csproj": {}
   },
   "projects": {
-    "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/kubernetes-client-api-consumer/web-ui/web-ui.csproj": {
+    "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/web-ui.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/kubernetes-client-api-consumer/web-ui/web-ui.csproj",
+        "projectUniqueName": "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/web-ui.csproj",
         "projectName": "web-ui",
-        "projectPath": "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/kubernetes-client-api-consumer/web-ui/web-ui.csproj",
+        "projectPath": "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/web-ui.csproj",
         "packagesPath": "/home/felipe/.nuget/packages/",
-        "outputPath": "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/kubernetes-client-api-consumer/web-ui/obj/",
+        "outputPath": "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/nuget.config",
+          "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/nuget.config",
           "/home/felipe/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [

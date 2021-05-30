@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mV8hO+UZaHrBfAR3cgyvNP24nNTE5PUT5gU8OBAe/DKcWjarH4uDxmuAtzsn+w3vMkqU94YI9NucAvvgLiTzkg==",
+  "dgSpecHash": "WR6woSCbDclj8dSXymhXltcpFXpgYAcoGUScPh8JQfs0NrYHK8sJOnfnwibZmkaVya8DRHaZzn271jyB8zazvg==",
   "success": true,
-  "projectFilePath": "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/kubernetes-client-api-consumer/web-ui/web-ui.csproj",
+  "projectFilePath": "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/web-ui.csproj",
   "expectedPackageFiles": [
     "/home/felipe/.nuget/packages/automapper/9.0.0/automapper.9.0.0.nupkg.sha512",
     "/home/felipe/.nuget/packages/fractions/4.0.1/fractions.4.0.1.nupkg.sha512",

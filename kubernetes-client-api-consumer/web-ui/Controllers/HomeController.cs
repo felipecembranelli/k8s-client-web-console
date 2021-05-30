@@ -33,10 +33,7 @@ namespace web_ui.Controllers
         {
             try
             {
-                // if (string.IsNullOrEmpty(ns))
-                // {
                 HttpContext.Session.SetString("Namespace", ns);
-                // }
 
                 var namespaces = await _repository.GetNamespacesAsync();
                 

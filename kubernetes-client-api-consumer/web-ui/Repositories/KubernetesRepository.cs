@@ -17,10 +17,6 @@ namespace web_ui.Repositories
 
     public KubernetesRepository()
     {
-      // _client = new Kubernetes(
-      //   KubernetesClientConfiguration.InClusterConfig()
-      // );
-
       _config = KubernetesClientConfiguration.BuildDefaultConfig();
 
       _client = new Kubernetes(_config);
@@ -168,73 +164,9 @@ namespace web_ui.Repositories
 
       var consoleOut = new StringWriter();
       Console.SetOut(consoleOut);
-      //Console.WriteLine("This is intercepted."); // This is not written to console
       stream.CopyTo(Console.OpenStandardOutput());
 
       return consoleOut.ToString();
-      //File.WriteAllText("ConsoleOutput.txt", );
-
-
-      // System.IO.MemoryStream destination = new MemoryStream();
-
-      // StreamWriter standardOutput = new StreamWriter(destination); 
-
-      // stream.CopyTo(standardOutput.BaseStream);
-      // standardOutput.AutoFlush = true; 
-      // Console.SetOut(standardOutput);
-
-      //       // Create the streams.
-      //       System.IO.MemoryStream destination = new MemoryStream();
-
-
-      //     //Console.WriteLine("Source length: {0}", source.Length.ToString());
-
-      //     // Copy source to destination.
-      //     stream.CopyTo(destination);
-
-      // return "text";
-
-
-
-      //Console.WriteLine("Destination length: {0}", destination.Length.ToString());
-
-            //stream.CopyTo())
-
-            // while (!stream.EndOfStream)
-            // {
-            //     Console.WriteLine(rdr.ReadLine());
-            // }
-
-            // System.IO.StreamReader sr = new System.IO.StreamReader(stream, System.Text.Encoding.ASCII);  
-            // // Use the stream. Remember when you are through with the stream to close it.  
-            
-            // var text = sr.ReadToEnd();
-
-            // sr.Close();  
-      
-
-            // return text;
-
-
-            // var responseValue = string.Empty;
-
-            // //     // Task task = response.Content.ReadAsStreamAsync().ContinueWith(t =>
-            // //     // {
-            // //     //     var stream = t.Result;
-            //         using (var reader = new System.IO.StreamReader(stream))
-            //         {
-            //             responseValue = reader.ReadToEnd();
-            //         }
-
-            // //     // });
-
-            // //     //task.Wait();
-
-            return "";
-
-      
-
-      //return stream.ReadToEnd();
 
     }
 
