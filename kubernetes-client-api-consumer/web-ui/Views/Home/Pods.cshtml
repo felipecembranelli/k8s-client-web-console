@@ -7,6 +7,10 @@
 @{    
         ViewData["Title"] = "Pods";    
     }    
+
+
+
+
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Pods</h1>
@@ -42,7 +46,7 @@
                     @Html.DisplayFor(modelItem => item.NodeName)    
                 </td>    
                 <td>    
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>    
+                    <a asp-action="log" asp-route-podId="@item.Name">View Log</a>    
                 </td>    
             </tr>    
         }    

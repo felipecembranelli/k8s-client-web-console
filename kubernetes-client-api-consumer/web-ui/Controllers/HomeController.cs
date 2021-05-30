@@ -244,7 +244,7 @@ namespace web_ui.Controllers
         }
 
         [HttpGet]
-        [Route("pod/logs/{podId}")]
+        [Route("log")]
         public async Task<IActionResult> GetLogsByPod([FromQuery (Name = "podId")] string podId)
         {
             //return View();
@@ -255,7 +255,15 @@ namespace web_ui.Controllers
 
             try
             {
-                var logModel = _repository.GetLogsByPodId ("pod1");
+                if (HttpContext.Session.GetString("Namespace")!=null)
+                    _namespace = HttpContext.Session.GetString("Namespace");
+                else 
+                {
+                    _namespace = "default";
+                    HttpContext.Session.SetString("Namespace", _namespace);
+                }
+                
+                var logModel = _repository.GetLogsByPodId (_namespace, podId);
 
                 // //var list = new System.Collections.Generic.List<string>();
                 // var logText = string.Empty;

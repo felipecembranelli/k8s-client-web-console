@@ -139,7 +139,7 @@ namespace web_ui.Repositories
         });
     }
 
-    public PodLogModel GetLogsByPodId(string podId)
+    public PodLogModel GetLogsByPodId(string podNamespace, string podId)
     {
       
       // if (podId == string.Empty)
@@ -147,7 +147,7 @@ namespace web_ui.Repositories
       //     return "No pod selected!";
       // }
 
-      var result = GetResult();
+      var result = GetResult(podNamespace, podId);
 
       //var logContent = _repository.GetLogsByPodId ("pod1").Result;
 
@@ -167,27 +167,20 @@ namespace web_ui.Repositories
       //string[] result = list.ToArray();
 
       var logModel = new PodLogModel();
+
+      logModel.PodName = podId;
+      logModel.PodNamespace = podNamespace;
       logModel.LogContent= logText;
 
       return logModel;
 
     }
 
-    private async Task<System.IO.Stream> GetResult() 
+    private async Task<System.IO.Stream> GetResult(string podNamespace, string podName) 
     {
-      var list = _client.ListNamespacedPod("default");
-
-      // if (list.Items.Count == 0)
-      // {
-      //     return "No pod selected!";
-      // }
-
-      var pod = list.Items[0];
-
-
       var response = await _client.ReadNamespacedPodLogWithHttpMessagesAsync(
-          pod.Metadata.Name,
-          pod.Metadata.NamespaceProperty, follow: true, limitBytes: 5000).ConfigureAwait(false);
+          podName,
+          podNamespace, follow: true, limitBytes: 5000).ConfigureAwait(false);
       var stream = response.Body;
 
       return stream;
