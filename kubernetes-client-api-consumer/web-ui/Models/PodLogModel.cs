@@ -7,5 +7,6 @@ namespace web_ui.Models
     public string PodNamespace { get; set; }
 
     public string LogContent { get; set; }
+    public System.Collections.Generic.List<string> LogRows { get; set; }
   }
 }

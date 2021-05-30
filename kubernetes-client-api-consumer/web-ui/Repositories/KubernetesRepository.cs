@@ -151,17 +151,26 @@ namespace web_ui.Repositories
 
       //var logContent = _repository.GetLogsByPodId ("pod1").Result;
 
-      //var list = new System.Collections.Generic.List<string>();
-      var logText = string.Empty;
+      var rows = new System.Collections.Generic.List<string>();
+      //var logText = string.Empty;
+      //System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
       using (System.IO.StreamReader sr = new System.IO.StreamReader(result.Result))
       {
-          logText = sr.ReadToEnd();
-          // string line;
-          // while ((line = sr.ReadLine()) != null)
-          // {
-          //     list.Add(line);
-          // }
+          //logText = sr.ReadToEnd();
+
+          string line;
+
+          while ((line = sr.ReadLine()) != null)
+          {
+              rows.Add(line);
+
+              //sb.Append(line);
+              //sb.Append(Environment.NewLine);
+              //sb.Append("<BR>");
+          }
+
+          //logText = sb.ToString();
       }
 
       //string[] result = list.ToArray();
@@ -170,7 +179,8 @@ namespace web_ui.Repositories
 
       logModel.PodName = podId;
       logModel.PodNamespace = podNamespace;
-      logModel.LogContent= logText;
+      //logModel.LogContent= logText;
+      logModel.LogRows = rows;
 
       return logModel;
 
@@ -178,9 +188,12 @@ namespace web_ui.Repositories
 
     private async Task<System.IO.Stream> GetResult(string podNamespace, string podName) 
     {
+      const int LOG_LIMIT_BYTES = 50000;
+
       var response = await _client.ReadNamespacedPodLogWithHttpMessagesAsync(
           podName,
-          podNamespace, follow: true, limitBytes: 5000).ConfigureAwait(false);
+          podNamespace, follow: true, limitBytes: LOG_LIMIT_BYTES).ConfigureAwait(false);
+
       var stream = response.Body;
 
       return stream;

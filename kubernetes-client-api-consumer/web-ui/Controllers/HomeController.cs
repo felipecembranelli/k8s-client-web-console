@@ -283,7 +283,7 @@ namespace web_ui.Controllers
                 // var logModel = new PodLogModel();
                 // logModel.LogContent= logText;
 
-                return View("PodLogs2", logModel);
+                return View("PodLogs", logModel);
             }
             catch(Exception)
             {
