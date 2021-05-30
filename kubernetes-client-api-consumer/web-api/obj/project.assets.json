@@ -5669,14 +5669,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/examples/web-api/KubeInspector.csproj",
-      "projectName": "KubeInspector",
-      "projectPath": "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/examples/web-api/KubeInspector.csproj",
+      "projectUniqueName": "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-api/web-api.csproj",
+      "projectName": "web-api",
+      "projectPath": "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-api/web-api.csproj",
       "packagesPath": "/home/felipe/.nuget/packages/",
-      "outputPath": "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/examples/web-api/obj/",
+      "outputPath": "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/felipe/projects/personal/k8s-study/kubernetes-csharp/nuget.config",
+        "/home/felipe/projects/personal/k8s-study/k8s-client-web-console/nuget.config",
         "/home/felipe/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [

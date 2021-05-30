@@ -255,10 +255,27 @@ namespace web_ui.Controllers
 
             try
             {
-                var text = await _repository.GetLogsByPodId ("pod1");
+                var logModel = _repository.GetLogsByPodId ("pod1");
 
-                //return Ok (pods);
-                return View("PodLogs", text);
+                // //var list = new System.Collections.Generic.List<string>();
+                // var logText = string.Empty;
+
+		        // using (System.IO.StreamReader sr = new System.IO.StreamReader(logContent))
+                // {
+                //     logText = sr.ReadToEnd();
+                //     // string line;
+                //     // while ((line = sr.ReadLine()) != null)
+                //     // {
+                //     //     list.Add(line);
+                //     // }
+                // }
+
+                // //string[] result = list.ToArray();
+
+                // var logModel = new PodLogModel();
+                // logModel.LogContent= logText;
+
+                return View("PodLogs2", logModel);
             }
             catch(Exception)
             {

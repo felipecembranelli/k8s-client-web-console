@@ -139,34 +139,59 @@ namespace web_ui.Repositories
         });
     }
 
-    public async Task<string> GetLogsByPodId(string podId)
+    public PodLogModel GetLogsByPodId(string podId)
     {
       
-      if (podId == string.Empty)
+      // if (podId == string.Empty)
+      // {
+      //     return "No pod selected!";
+      // }
+
+      var result = GetResult();
+
+      //var logContent = _repository.GetLogsByPodId ("pod1").Result;
+
+      //var list = new System.Collections.Generic.List<string>();
+      var logText = string.Empty;
+
+      using (System.IO.StreamReader sr = new System.IO.StreamReader(result.Result))
       {
-          return "No pod selected!";
+          logText = sr.ReadToEnd();
+          // string line;
+          // while ((line = sr.ReadLine()) != null)
+          // {
+          //     list.Add(line);
+          // }
       }
 
+      //string[] result = list.ToArray();
+
+      var logModel = new PodLogModel();
+      logModel.LogContent= logText;
+
+      return logModel;
+
+    }
+
+    private async Task<System.IO.Stream> GetResult() 
+    {
       var list = _client.ListNamespacedPod("default");
 
-      if (list.Items.Count == 0)
-      {
-          return "No pod selected!";
-      }
+      // if (list.Items.Count == 0)
+      // {
+      //     return "No pod selected!";
+      // }
 
       var pod = list.Items[0];
 
 
       var response = await _client.ReadNamespacedPodLogWithHttpMessagesAsync(
           pod.Metadata.Name,
-          pod.Metadata.NamespaceProperty, follow: true).ConfigureAwait(false);
+          pod.Metadata.NamespaceProperty, follow: true, limitBytes: 5000).ConfigureAwait(false);
       var stream = response.Body;
 
-      var consoleOut = new StringWriter();
-      Console.SetOut(consoleOut);
-      stream.CopyTo(Console.OpenStandardOutput());
+      return stream;
 
-      return consoleOut.ToString();
 
     }
 

@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kubernetes-client-api-consumer", "kubernetes-client-api-consumer", "{D6221A20-6E20-4BFA-ACC3-743C477B89B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web-ui", "kubernetes-client-api-consumer\web-ui\web-ui.csproj", "{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "web-api", "kubernetes-client-api-consumer\web-api\web-api.csproj", "{08820121-AB7E-4BF7-8D9F-54696B0CAB24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Debug|x64.Build.0 = Debug|Any CPU
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Debug|x86.Build.0 = Debug|Any CPU
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Release|x64.ActiveCfg = Release|Any CPU
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Release|x64.Build.0 = Release|Any CPU
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Release|x86.ActiveCfg = Release|Any CPU
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437}.Release|x86.Build.0 = Release|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Debug|x64.Build.0 = Debug|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Debug|x86.Build.0 = Debug|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Release|x64.ActiveCfg = Release|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Release|x64.Build.0 = Release|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Release|x86.ActiveCfg = Release|Any CPU
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{560E8B58-E4F2-4023-BAC6-A9FBFC6DD437} = {D6221A20-6E20-4BFA-ACC3-743C477B89B2}
+		{08820121-AB7E-4BF7-8D9F-54696B0CAB24} = {D6221A20-6E20-4BFA-ACC3-743C477B89B2}
+	EndGlobalSection
+EndGlobal

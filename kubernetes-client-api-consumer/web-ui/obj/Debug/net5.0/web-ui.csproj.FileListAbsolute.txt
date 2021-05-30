@@ -169,7 +169,6 @@
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/Razor/Views/Home/Index.cshtml.g.cs
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/Razor/Views/Home/Namespaces.cshtml.g.cs
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/Razor/Views/Home/Nodes.cshtml.g.cs
-/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/Razor/Views/Home/PodLogs.cshtml.g.cs
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/Razor/Views/Home/Pods.cshtml.g.cs
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/Razor/Views/Home/Privacy.cshtml.g.cs
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/Razor/Views/Home/Replicasets.cshtml.g.cs
@@ -187,3 +186,5 @@
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/ref/web-ui.dll
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/web-ui.pdb
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/web-ui.genruntimeconfig.cache
+/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/Razor/Views/Home/PodLogs-bk.cshtml.g.cs
+/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/Razor/Views/Home/PodLogs2.cshtml.g.cs
