@@ -17,6 +17,7 @@ namespace web_ui.Repositories
     Task<IEnumerable> GetServicesByNamespace(string resourceNamespace);
     Task<IEnumerable> GetDeploymentsByNamespace(string resourceNamespace);
     Task<IEnumerable> GetReplicaSetByNamespace(string resourceNamespace);
+    Task<PodModel> GetPodSpecAsync(string podId, string ns);
   }
   
 }

@@ -187,3 +187,4 @@
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/web-ui.pdb
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/web-ui.genruntimeconfig.cache
 /home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/Razor/Views/Home/PodLogs.cshtml.g.cs
+/home/felipe/projects/personal/k8s-study/k8s-client-web-console/kubernetes-client-api-consumer/web-ui/obj/Debug/net5.0/Razor/Views/Home/PodSpec.cshtml.g.cs

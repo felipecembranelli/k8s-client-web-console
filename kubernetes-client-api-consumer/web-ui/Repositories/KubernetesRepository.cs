@@ -124,8 +124,99 @@ namespace web_ui.Repositories
           {
             Name = p.Metadata.Name,
             Id = p.Metadata.Uid,
-            NodeName = p.Spec.NodeName
+            NodeName = p.Spec.NodeName,
+            PodNamespace = p.Metadata.NamespaceProperty,
+            Status = p.Status.Phase,
+            CreationTimestamp = p.Metadata.CreationTimestamp.ToString()
         });
+    }
+
+    public async Task<PodModel> GetPodSpecAsync(string podId, string ns)
+    {
+      var pod = await _client.ReadNamespacedPodAsync(podId, ns);
+
+      var spec = new PodModel();
+
+      spec.Name = pod.Metadata.Name;
+      spec.Id = pod.Metadata.Uid;
+      spec.NodeName = pod.Spec.NodeName;
+      spec.PodNamespace = pod.Metadata.NamespaceProperty;
+      spec.Status = pod.Status.Phase;
+      spec.CreationTimestamp = pod.Metadata.CreationTimestamp.ToString();
+      spec.TotalContainers = pod.Spec.Containers.Count;
+      spec.IP = "";
+
+      foreach (var item in pod.Spec.Containers)
+      {
+        var container = new ContainerModel();
+
+        container.Name = item.Name;
+        container.Image = item.Image;
+        
+        container.Env = new List<EnviromentVariable>();
+        container.Port = new List<ContainerPort>();
+        container.Volume = new List<ContainerVolume>();
+        container.LivenessProbe = new ContainerLivenessProbe();
+        container.ReadynessProbe = new ContainerReadynessProbe();
+
+        if (item.Env != null) {
+          container.Env = item.Env.Select(p => new EnviromentVariable
+                        {
+                          Name = p.Name,
+                          Value = p.Value
+                        } );
+        }
+
+        if (item.Ports != null) {
+          container.Port = item.Ports.Select(p => new ContainerPort
+                        {
+                          Port = p.ContainerPort,
+                          HostPort = p.HostPort,
+                          HostIP = p.HostIP,
+                          Name = p.Name,
+                          Protocol = p.Protocol
+                        });
+        }                        
+
+        if (item.WorkingDir != null) container.WorkingDir = item.WorkingDir;
+
+        if (item.LivenessProbe != null) {
+          container.LivenessProbe.HttpGetScheme = item.LivenessProbe.HttpGet.Scheme;
+          container.LivenessProbe.HttpGetPath = item.LivenessProbe.HttpGet.Path;
+          container.LivenessProbe.InitialDelaySeconds = item.LivenessProbe.InitialDelaySeconds;
+          container.LivenessProbe.PeriodSeconds = item.LivenessProbe.PeriodSeconds;
+          container.LivenessProbe.TimeoutSeconds = item.LivenessProbe.TimeoutSeconds;
+        }
+
+        if (item.ReadinessProbe != null) {
+          container.ReadynessProbe.HttpGetScheme = item.ReadinessProbe.HttpGet.Scheme;
+          container.ReadynessProbe.HttpGetPath = item.ReadinessProbe.HttpGet.Path;
+          container.ReadynessProbe.InitialDelaySeconds = item.ReadinessProbe.InitialDelaySeconds;
+          container.ReadynessProbe.PeriodSeconds = item.ReadinessProbe.PeriodSeconds;
+          container.ReadynessProbe.TimeoutSeconds = item.ReadinessProbe.TimeoutSeconds;
+        }
+
+        if (item.VolumeMounts != null) {
+          container.Volume = item.VolumeMounts.Select(p => new ContainerVolume
+                        {
+                          Name = p.Name,
+                          MountPath = p.MountPath
+                        });
+        }
+          
+        spec.Containers.Add(container);
+      }
+
+      int totalReady = 0;
+
+      foreach (var cs in pod.Status.ContainerStatuses)
+      {
+        if (cs.Ready) totalReady++;
+      }
+
+      spec.Ready = spec.TotalContainers + "/" + totalReady.ToString();
+
+      return spec;
     }
 
     public async Task<IEnumerable<NamespaceModel>> GetNamespacesAsync()

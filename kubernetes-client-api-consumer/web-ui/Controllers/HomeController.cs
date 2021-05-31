@@ -214,6 +214,28 @@ namespace web_ui.Controllers
         }
 
         [HttpGet]
+        [Route("spec")]
+        public async Task<IActionResult> GetPodsByNamespaces(string podId, string podNamespace)
+        {
+            //return View();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest ();
+            }
+
+            try
+            {
+                var pod = await _repository.GetPodSpecAsync(podId, podNamespace);
+
+                return View("PodSpec", pod);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode (500);
+            }
+        }
+
+        [HttpGet]
         [Route("namespaces")]
         public async Task<IActionResult> GetNamespaces()
         {
