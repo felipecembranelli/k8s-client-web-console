@@ -136,6 +136,7 @@ namespace web_ui.Repositories
       var pod = await _client.ReadNamespacedPodAsync(podId, ns);
 
       var spec = new PodModel();
+      spec.Containers = new List<ContainerModel>();
 
       spec.Name = pod.Metadata.Name;
       spec.Id = pod.Metadata.Uid;
@@ -153,11 +154,12 @@ namespace web_ui.Repositories
         container.Name = item.Name;
         container.Image = item.Image;
         
-        container.Env = new List<EnviromentVariable>();
-        container.Port = new List<ContainerPort>();
-        container.Volume = new List<ContainerVolume>();
+        // container.Env = new List<EnviromentVariable>();
+        // container.Port = new List<ContainerPort>();
+        // container.Volume = new List<ContainerVolume>();
         container.LivenessProbe = new ContainerLivenessProbe();
         container.ReadynessProbe = new ContainerReadynessProbe();
+        // container.Ready = true;
 
         if (item.Env != null) {
           container.Env = item.Env.Select(p => new EnviromentVariable
@@ -178,19 +180,26 @@ namespace web_ui.Repositories
                         });
         }                        
 
-        if (item.WorkingDir != null) container.WorkingDir = item.WorkingDir;
+        if (item.WorkingDir != null) 
+          container.WorkingDir = item.WorkingDir;
+        else
+          container.WorkingDir = string.Empty;
 
         if (item.LivenessProbe != null) {
-          container.LivenessProbe.HttpGetScheme = item.LivenessProbe.HttpGet.Scheme;
-          container.LivenessProbe.HttpGetPath = item.LivenessProbe.HttpGet.Path;
+          if (item.LivenessProbe.HttpGet != null) {
+            container.LivenessProbe.HttpGetScheme = item.LivenessProbe.HttpGet.Scheme;
+            container.LivenessProbe.HttpGetPath = item.LivenessProbe.HttpGet.Path;
+          }
           container.LivenessProbe.InitialDelaySeconds = item.LivenessProbe.InitialDelaySeconds;
           container.LivenessProbe.PeriodSeconds = item.LivenessProbe.PeriodSeconds;
           container.LivenessProbe.TimeoutSeconds = item.LivenessProbe.TimeoutSeconds;
         }
 
         if (item.ReadinessProbe != null) {
-          container.ReadynessProbe.HttpGetScheme = item.ReadinessProbe.HttpGet.Scheme;
-          container.ReadynessProbe.HttpGetPath = item.ReadinessProbe.HttpGet.Path;
+          if (item.ReadinessProbe.HttpGet != null) {
+            container.ReadynessProbe.HttpGetScheme = item.ReadinessProbe.HttpGet.Scheme;
+            container.ReadynessProbe.HttpGetPath = item.ReadinessProbe.HttpGet.Path;
+          }
           container.ReadynessProbe.InitialDelaySeconds = item.ReadinessProbe.InitialDelaySeconds;
           container.ReadynessProbe.PeriodSeconds = item.ReadinessProbe.PeriodSeconds;
           container.ReadynessProbe.TimeoutSeconds = item.ReadinessProbe.TimeoutSeconds;
@@ -204,7 +213,16 @@ namespace web_ui.Repositories
                         });
         }
           
-        spec.Containers.Add(container);
+          try
+          {
+            spec.Containers.Add(container);
+              
+          }
+          catch (System.Exception ex)
+          {
+              
+              throw;
+          }
       }
 
       int totalReady = 0;

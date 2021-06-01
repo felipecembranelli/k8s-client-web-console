@@ -35,7 +35,8 @@
                     @{
                         if (item.DefaultNamespace==true)
                         {
-                            <a asp-action="setnamespace" asp-route-ns="@item.Name">(Default)</a>
+                            <a asp-action="setnamespace" asp-route-ns="@item.Name"><b>(Default)</b></a>
+                            
                         }
                         else
                         {

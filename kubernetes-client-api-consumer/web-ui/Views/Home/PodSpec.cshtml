@@ -57,18 +57,18 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="table-responsive">
-                    @* <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr>
-                                <th>Log</th>
+                                <th>Containers</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        @* <tbody>
                             <tr class="odd gradeX">
                                 <td>@Html.DisplayFor(model => model.LogContent) </td>
                             </tr>
-                        </tbody>
-                    </table> *@
+                        </tbody> *@
+                    </table>
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>    
                             <tr>
@@ -80,6 +80,18 @@
                                 </th>                                    
                                 <th>    
                                     Image
+                                </th>                                    
+                                <th>    
+                                    RestartCount
+                                </th>                                    
+                                <th>    
+                                    WorkingDir
+                                </th>                                    
+                                <th>    
+                                    Env. Variables
+                                </th>                                    
+                                <th>    
+                                    Volumes
                                 </th>                                    
                             </tr>    
                         </thead>    
@@ -97,7 +109,33 @@
                                     <td>    
                                         @c.Image
                                     </td>                                        
+                                    <td>    
+                                        @c.RestartCount
+                                    </td> 
+                                    <td>    
+                                        @if (c.WorkingDir != null) 
+                                            @c.WorkingDir
+                                    </td> 
+                                    <td>
+                                        @if (c.Env != null) {
+                                        
+                                            foreach (var env in c.Env)
+                                            {
+                                                @String.Format("{0} = {1}", env.Name, env.Value);<br>
+                                            }
+                                        }
+                                    </td> 
+                                    <td>
+                                        @if (c.Volume != null) {
+                                        
+                                            foreach (var vol in c.Volume)
+                                            {
+                                                @vol.MountPath<br>
+                                            }
+                                        }
+                                    </td> 
                                 </tr>    
+
                             }    
                         </tbody>    
                     </table>   

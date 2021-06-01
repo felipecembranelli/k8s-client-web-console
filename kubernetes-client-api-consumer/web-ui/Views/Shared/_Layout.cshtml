@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc;
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -40,6 +42,7 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
                 <a class="navbar-brand" href="index.html">Kubernetes</a>
+                @* <img src="../../icon/k8s.jpeg" width="60" height="60" style="background: rgb(0, 0, 0); "/> *@
             </div>
 
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -143,16 +146,29 @@
                             <a asp-controller="Home" asp-action="index" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Overview<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-institution fa-fw"></i> Overview<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a asp-controller="Home" asp-action="cluster-info">Cluster Info</a>
                                 </li>
                                 <li>
-                                    <a asp-controller="Home" asp-action="namespaces">Namespaces</a>
-                                </li>
-                                <li>
                                     <a asp-controller="Home" asp-action="nodes">Nodes</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                         <li>
+                            <a href="#"><i class="fa fa-server fa-fw"></i> Namespaces<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a asp-controller="Home" asp-action="namespaces">
+                                        @if (Context.Session.GetString("Namespace")!=null) {
+                                            <div>@Context.Session.GetString("Namespace")</div>
+                                        }
+                                        else {
+                                            <div>Default</div>
+                                        }
+                                    </a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -179,7 +195,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Services<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-align-justify fa-fw"></i> Services<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a asp-controller="Home" asp-action="services">Services</a>
