@@ -27,11 +27,20 @@
                 @Html.DisplayNameFor(model => model.Name)    
             </th>    
             <th>    
+                @Html.DisplayNameFor(model => model.Ready)    
+            </th>                    
+            <th>    
                 @Html.DisplayNameFor(model => model.Status)    
             </th>        
             <th>    
+                @Html.DisplayNameFor(model => model.Restart)    
+            </th>   
+            <th>    
                 @Html.DisplayNameFor(model => model.CreationTimestamp)    
             </th>   
+            <th>    
+                @Html.DisplayNameFor(model => model.IP)    
+            </th>                                                
             <th>    
                 @Html.DisplayNameFor(model => model.NodeName)    
             </th>    
@@ -48,17 +57,37 @@
                 <td>    
                     @Html.DisplayFor(modelItem => item.Name)    
                 </td>    
-                <td>    
-                    @Html.DisplayFor(modelItem => item.Status)    
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ready)    
                 </td>    
+                <td>@switch (item.Status)
+                    {
+                        case "Running":
+                            <button type="button" class="btn btn-success">@Html.DisplayFor(modelItem => item.Status)</button>
+                            break;
+                        case "Succeeded":
+                            <button type="button" class="btn btn-warning">@Html.DisplayFor(modelItem => item.Status)</button>
+                            break;
+                        default:
+                            <button type="button" class="btn btn-danger">@Html.DisplayFor(modelItem => item.Status)</button>
+                            break;
+                    }
+                </td>    
+                <td>    
+                    @Html.DisplayFor(modelItem => item.Restart)    
+                </td>                    
+
                 <td>    
                     @Html.DisplayFor(modelItem => item.CreationTimestamp)    
                 </td>                    
                 <td>    
+                    @Html.DisplayFor(modelItem => item.IP)    
+                </td>                                    
+                <td>    
                     @Html.DisplayFor(modelItem => item.NodeName)    
                 </td>    
                 <td>    
-                    <a asp-action="log" asp-route-podId="@item.Name">View Log</a> |    
+                    <a asp-action="log" asp-route-podId="@item.Name" asp-route-podNamespace="@item.PodNamespace">View Log</a> |    
                     <a asp-action="spec" asp-route-podId="@item.Name" asp-route-podNamespace="@item.PodNamespace">Details</a>     
                 </td>    
             </tr>    

@@ -15,6 +15,7 @@ namespace web_ui.Models
     public string CreationTimestamp { get; set; }
     public int TotalContainers { get; set; }
     public List<ContainerModel> Containers { get; set; }
+    public int Age { get; set;}
 
   }
  

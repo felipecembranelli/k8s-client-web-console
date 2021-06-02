@@ -56,6 +56,15 @@
                 <li><a href="#"><i class="fa fa-home fa-fw"></i> Home</a></li>
             </ul>
 
+            <ul class="nav navbar-right navbar-top-links">
+                <li>
+                    <a asp-controller="Home" asp-action="cluster-info">
+                        @if (Context.Session.GetString("Cluster")!=null) {
+                            <div>@Context.Session.GetString("Cluster")</div>
+                        }
+                    </a>
+                </li>
+            </ul>
             @* <ul class="nav navbar-right navbar-top-links">
                 <li class="dropdown navbar-inverse">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -163,10 +172,10 @@
                                 <li>
                                     <a asp-controller="Home" asp-action="namespaces">
                                         @if (Context.Session.GetString("Namespace")!=null) {
-                                            <div>@Context.Session.GetString("Namespace")</div>
+                                            <div><b>@Context.Session.GetString("Namespace")</b></div>
                                         }
                                         else {
-                                            <div>Default</div>
+                                            <div><b>Default</b></div>
                                         }
                                     </a>
                                 </li>

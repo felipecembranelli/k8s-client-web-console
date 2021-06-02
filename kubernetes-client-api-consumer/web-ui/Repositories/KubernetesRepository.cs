@@ -127,9 +127,25 @@ namespace web_ui.Repositories
             NodeName = p.Spec.NodeName,
             PodNamespace = p.Metadata.NamespaceProperty,
             Status = p.Status.Phase,
-            CreationTimestamp = p.Metadata.CreationTimestamp.ToString()
+            CreationTimestamp = p.Metadata.CreationTimestamp.ToString(),
+            //Age = p.Metadata.CreationTimestamp.Date
+            Restart = p.Status.ContainerStatuses.Select(s => s.RestartCount).Sum().ToString(),
+            IP = p.Status.PodIP,
+            Ready = CountReady(p.Status.ContainerStatuses).ToString() + "/" + p.Spec.Containers.Count.ToString()
         });
-    }
+
+      }
+
+      private int CountReady(IList<V1ContainerStatus> listContainers) 
+      {
+        var totalReady = 0;
+
+        foreach (var c in listContainers)
+        {
+          if (c.Ready) totalReady++;
+        }
+        return totalReady;
+      }
 
     public async Task<PodModel> GetPodSpecAsync(string podId, string ns)
     {
@@ -145,7 +161,8 @@ namespace web_ui.Repositories
       spec.Status = pod.Status.Phase;
       spec.CreationTimestamp = pod.Metadata.CreationTimestamp.ToString();
       spec.TotalContainers = pod.Spec.Containers.Count;
-      spec.IP = "";
+      spec.IP = pod.Status.PodIP;
+      spec.Restart = pod.Status.ContainerStatuses.Select(s => s.RestartCount).Sum().ToString();
 
       foreach (var item in pod.Spec.Containers)
       {
@@ -154,12 +171,10 @@ namespace web_ui.Repositories
         container.Name = item.Name;
         container.Image = item.Image;
         
-        // container.Env = new List<EnviromentVariable>();
-        // container.Port = new List<ContainerPort>();
-        // container.Volume = new List<ContainerVolume>();
         container.LivenessProbe = new ContainerLivenessProbe();
         container.ReadynessProbe = new ContainerReadynessProbe();
-        // container.Ready = true;
+        container.RestartCount = pod.Status.ContainerStatuses.Where(c => c.Name == item.Name).Select(c => c.RestartCount).Sum();
+        container.Ready = pod.Status.ContainerStatuses.Where(c => c.Name == item.Name).Select(c => c.Ready).First();
 
         if (item.Env != null) {
           container.Env = item.Env.Select(p => new EnviromentVariable
@@ -232,7 +247,7 @@ namespace web_ui.Repositories
         if (cs.Ready) totalReady++;
       }
 
-      spec.Ready = spec.TotalContainers + "/" + totalReady.ToString();
+      spec.Ready = totalReady.ToString() + "/" + spec.TotalContainers;
 
       return spec;
     }

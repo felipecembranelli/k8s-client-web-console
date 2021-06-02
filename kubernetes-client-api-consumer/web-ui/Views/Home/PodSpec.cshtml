@@ -6,7 +6,7 @@
        
 @{    
         ViewData["Title"] = "Pod Details";    
-    }    
+}    
 
  <div class="container-fluid">
     <div class="row">
@@ -43,7 +43,18 @@
                                     <td>@Html.DisplayFor(model => model.PodNamespace) </td>
                                     <td>@Html.DisplayFor(model => model.NodeName) </td>
                                     <td>@Html.DisplayFor(model => model.Ready) </td>
-                                    <td>@Html.DisplayFor(model => model.Status) </td>
+                                    @switch (Model.Status)
+                                    {
+                                        case "Running":
+                                            <td class="success">@Html.DisplayFor(model => model.Status) </td>
+                                            break;
+                                        case "Succeeded":
+                                            <td class="warning">@Html.DisplayFor(model => model.Status) </td>
+                                            break;
+                                        default:
+                                            <td class="danger">@Html.DisplayFor(model => model.Status) </td>
+                                            break;
+                                    }
                                     <td>@Html.DisplayFor(model => model.IP) </td>
                                     <td>@Html.DisplayFor(model => model.CreationTimestamp) </td>
                                 </tr>
@@ -130,7 +141,7 @@
                                         
                                             foreach (var vol in c.Volume)
                                             {
-                                                @vol.MountPath<br>
+                                                @String.Format("{0} = {1}", vol.Name, vol.MountPath);<br>
                                             }
                                         }
                                     </td> 

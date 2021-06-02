@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using web_ui.Models;
 using web_ui.Repositories;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace web_ui.Controllers
 {
@@ -90,7 +91,9 @@ namespace web_ui.Controllers
             {
 
                 var cluster = _repository.GetClusterInfo();
-                //return Ok (pods);
+
+                HttpContext.Session.SetString("Cluster", cluster.CurrentContext);
+
                 return View("ClusterInfo", cluster);
             }
             catch(Exception)
@@ -267,7 +270,7 @@ namespace web_ui.Controllers
 
         [HttpGet]
         [Route("log")]
-        public async Task<IActionResult> GetLogsByPod([FromQuery (Name = "podId")] string podId)
+        public async Task<IActionResult> GetLogsByPod([FromQuery (Name = "podId")] string podId, string podNamespace)
         {
             //return View();
             if (!ModelState.IsValid)
@@ -277,15 +280,15 @@ namespace web_ui.Controllers
 
             try
             {
-                if (HttpContext.Session.GetString("Namespace")!=null)
-                    _namespace = HttpContext.Session.GetString("Namespace");
-                else 
-                {
-                    _namespace = "default";
-                    HttpContext.Session.SetString("Namespace", _namespace);
-                }
+                // if (HttpContext.Session.GetString("Namespace")!=null)
+                //     _namespace = HttpContext.Session.GetString("Namespace");
+                // else 
+                // {
+                //     _namespace = "default";
+                //     HttpContext.Session.SetString("Namespace", _namespace);
+                // }
                 
-                var logModel = _repository.GetLogsByPodId (_namespace, podId);
+                var logModel = _repository.GetLogsByPodId (podNamespace, podId);
 
                 // //var list = new System.Collections.Generic.List<string>();
                 // var logText = string.Empty;
@@ -307,9 +310,15 @@ namespace web_ui.Controllers
 
                 return View("PodLogs", logModel);
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                return StatusCode (500);
+                var customError = new ErrorViewModel 
+                {
+                    ErrorMessage = ex.Message
+                };
+
+                return View("Error", customError);
+                // StatusCode (500);
             }
         }
 
@@ -330,5 +339,22 @@ namespace web_ui.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        // protected override void OnException(ExceptionContext filterContext)
+        // {
+        //     filterContext.ExceptionHandled = true;
+
+        //     //Log the error!!
+        //     _logger.LogError(filterContext.Exception.ToString());
+
+        //     //Redirect or return a view, but not both.
+        //     //filterContext.Result = RedirectToAction("Index", "ErrorHandler");
+        //     // OR 
+        //     filterContext.Result = new ViewResult
+        //     {
+        //         ViewName = "~/Views/Shared/Error.cshtml"
+        //     };
+        //}
+
     }
 }
