@@ -5,7 +5,16 @@ This web application is a demo using kubernetes-csharp client library.
 
 The client library uses your /.kube/config file to connect to your kubernetes cluster. For more information go to the original [client repo library](https://github.com/kubernetes-client/csharp)
 
+
 # Usage
+
+## Run as docker container
+
+```sh
+docker run -p 8080:80 -v /home/felipe/.kube/config:/root/.kube/config --name k8s-explorer felipecembranelli/k8s-tools:k8s-explorer
+```
+
+## Run using source code
 
 ```sh
 cd k8s-client-web-console/web-ui
