@@ -10,6 +10,8 @@ The client library uses your /.kube/config file to connect to your kubernetes cl
 
 ## Run as docker container
 
+Pass your Kubernetes config file as parameter (Ex: /home/felipe/.kube/config)
+
 ```sh
 docker run -p 8080:80 -v /home/felipe/.kube/config:/root/.kube/config --name k8s-explorer felipecembranelli/k8s-tools:k8s-explorer
 ```
