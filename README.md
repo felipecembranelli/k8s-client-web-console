@@ -27,12 +27,12 @@ dotnet run
 
 ![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/kubernetes-client-api-consumer/doc/cluster.png)
 
-![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/doc/blob/master/kubernetes-client-api-consumer/doc/namespaces.png)
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/kubernetes-client-api-consumer/doc/namespaces.png)
 
-![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/doc/blob/master/kubernetes-client-api-consumer/doc/nodes.png)
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/kubernetes-client-api-consumer/doc/nodes.png)
 
-![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/doc/blob/master/kubernetes-client-api-consumer/doc/pods.png)
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/kubernetes-client-api-consumer/doc/pods.png)
 
-![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/doc/blob/master/kubernetes-client-api-consumer/doc/pod-detail.png)
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/kubernetes-client-api-consumer/doc/pod-detail.png)
 
-![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/doc/blob/master/kubernetes-client-api-consumer/doc/logs.png)
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/kubernetes-client-api-consumer/doc/logs.png)
