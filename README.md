@@ -16,9 +16,10 @@ Pass your Kubernetes config file as parameter (Ex: /home/felipe/.kube/config)
 docker run -p 8080:80 -v /home/felipe/.kube/config:/root/.kube/config --name k8s-explorer felipecembranelli/k8s-tools:k8s-explorer
 ```
 
-### Connecting the dashboard to local Minikube
+Connecting the dashboard to local Minikube
 
 I had issues accessing my local Kubernetes instance (Minikube) related to cluster name resolution. The work around was to start the docker container using the parameter --network="host"
+
 ```sh
 docker run --network="host" -p 8080:80 -v /home/felipe/.kube/config:/root/.kube/config --name k8s-explorer felipecembranelli/k8s-tools:k8s-explorer
 ```
@@ -46,7 +47,7 @@ dotnet run
 
 # Known Issues
 
-## Get pods logs method is hanging
+## Get pod log method is hanging
 Currently there is a constraint with the size of the log returned by the Kubernetes. There is a cut-off hard coded (method Repostory->GetResult):
 
 ```dotnet
