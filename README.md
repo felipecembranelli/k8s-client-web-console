@@ -24,8 +24,15 @@ dotnet run
 ```
 
 ## Sample Screens
-![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/main.JPG)
 
-![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/namespaces.png)
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/doc/blob/master/cluster.png)
 
-![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/blob/master/pods.JPG)
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/doc/blob/master/namespaces.png)
+
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/doc/blob/master/nodes.png)
+
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/doc/blob/master/pods.png)
+
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/doc/blob/master/pod-detail.png)
+
+![alt tag](https://github.com/felipecembranelli/k8s-client-web-console/doc/blob/master/logs.png)

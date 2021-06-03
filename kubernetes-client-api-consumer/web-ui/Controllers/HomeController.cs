@@ -96,9 +96,14 @@ namespace web_ui.Controllers
 
                 return View("ClusterInfo", cluster);
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                return StatusCode (500);
+                var customError = new ErrorViewModel 
+                {
+                    ErrorMessage = ex.Message
+                };
+
+                return View("Error", customError);
             }
         }
 
@@ -116,12 +121,17 @@ namespace web_ui.Controllers
             {
 
                 var nodes = _repository.GetNodes();
-                //return Ok (pods);
+
                 return View("Nodes", nodes);
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                return StatusCode (500);
+                var customError = new ErrorViewModel 
+                {
+                    ErrorMessage = ex.Message
+                };
+
+                return View("Error", customError);
             }
         }
 
@@ -138,13 +148,18 @@ namespace web_ui.Controllers
             try
             {
                 var services = await _repository.GetServicesByNamespace(GetDefaultNamespace());
-                //return Ok (pods);
+
                 return View("Services", services);
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                return StatusCode (500);
-            }
+                var customError = new ErrorViewModel 
+                {
+                    ErrorMessage = ex.Message
+                };
+
+                return View("Error", customError);
+            }        
         }
 
         [HttpGet]
@@ -164,9 +179,14 @@ namespace web_ui.Controllers
                 
                 return View("Deployments", deployments);
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                return StatusCode (500);
+                var customError = new ErrorViewModel 
+                {
+                    ErrorMessage = ex.Message
+                };
+
+                return View("Error", customError);
             }
         }
 
@@ -187,9 +207,14 @@ namespace web_ui.Controllers
                 
                 return View("Replicasets", replicasets);
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                return StatusCode (500);
+                var customError = new ErrorViewModel 
+                {
+                    ErrorMessage = ex.Message
+                };
+
+                return View("Error", customError);
             }
         }
 
@@ -207,13 +232,18 @@ namespace web_ui.Controllers
             try
             {
                 var pods = await _repository.GetPodsAsync (GetDefaultNamespace());
-                //return Ok (pods);
+
                 return View("Pods", pods);
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                return StatusCode (500);
-            }
+                var customError = new ErrorViewModel 
+                {
+                    ErrorMessage = ex.Message
+                };
+
+                return View("Error", customError);
+            }        
         }
 
         [HttpGet]
@@ -234,7 +264,12 @@ namespace web_ui.Controllers
             }
             catch(Exception ex)
             {
-                return StatusCode (500);
+                var customError = new ErrorViewModel 
+                {
+                    ErrorMessage = ex.Message
+                };
+
+                return View("Error", customError);
             }
         }
 
@@ -262,9 +297,14 @@ namespace web_ui.Controllers
 
                 return View("Namespaces", SetDefaultNamespace(namespaces, _namespace));
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-                return StatusCode (500);
+                var customError = new ErrorViewModel 
+                {
+                    ErrorMessage = ex.Message
+                };
+
+                return View("Error", customError);
             }
         }
 
@@ -280,33 +320,8 @@ namespace web_ui.Controllers
 
             try
             {
-                // if (HttpContext.Session.GetString("Namespace")!=null)
-                //     _namespace = HttpContext.Session.GetString("Namespace");
-                // else 
-                // {
-                //     _namespace = "default";
-                //     HttpContext.Session.SetString("Namespace", _namespace);
-                // }
                 
                 var logModel = _repository.GetLogsByPodId (podNamespace, podId);
-
-                // //var list = new System.Collections.Generic.List<string>();
-                // var logText = string.Empty;
-
-		        // using (System.IO.StreamReader sr = new System.IO.StreamReader(logContent))
-                // {
-                //     logText = sr.ReadToEnd();
-                //     // string line;
-                //     // while ((line = sr.ReadLine()) != null)
-                //     // {
-                //     //     list.Add(line);
-                //     // }
-                // }
-
-                // //string[] result = list.ToArray();
-
-                // var logModel = new PodLogModel();
-                // logModel.LogContent= logText;
 
                 return View("PodLogs", logModel);
             }
@@ -318,7 +333,6 @@ namespace web_ui.Controllers
                 };
 
                 return View("Error", customError);
-                // StatusCode (500);
             }
         }
 
@@ -339,22 +353,5 @@ namespace web_ui.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-        // protected override void OnException(ExceptionContext filterContext)
-        // {
-        //     filterContext.ExceptionHandled = true;
-
-        //     //Log the error!!
-        //     _logger.LogError(filterContext.Exception.ToString());
-
-        //     //Redirect or return a view, but not both.
-        //     //filterContext.Result = RedirectToAction("Index", "ErrorHandler");
-        //     // OR 
-        //     filterContext.Result = new ViewResult
-        //     {
-        //         ViewName = "~/Views/Shared/Error.cshtml"
-        //     };
-        //}
-
     }
 }
